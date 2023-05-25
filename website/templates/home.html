@@ -2,7 +2,58 @@
 
 {% block content %}
 
-<h1>Hello Web! :)</h1>
+{% if response %}
+<pre>
+<code class='line-numbers language-{{lang}}'>
+{{response}}
+
+</code></pre>
+
+<br/><br/>
+<form method=POST action="{% url 'home' %}" >
+    {% csrf_token %}
+    <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Input code:</label>
+    <textarea class="form-control" name="code" placeholder="Insert your code here" rows="10">{{code}}</textarea>
+</div>
+<select class="form-select" name="lang">
+    <option selected>Select Programming Language</option>
+    {% for lang in lang_list %}
+        <option value="{{lang}}"> {{lang}}</option>
+    {% endfor %}
+    </select>
+<br/>
+<button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+{% else %}
+
+<pre>
+<code class='line-numbers language-python'>
+print("Hello World!")
+
+</code></pre>
+
+<br/><br/>
+<form method=POST action="{% url 'home' %}" >
+    {% csrf_token %}
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Input code:</label>
+    <textarea class="form-control" name="code" placeholder="Insert your code here" rows="10"></textarea>
+</div>
+<select class="form-select" name="lang">
+    <option selected>Select Programming Language</option>
+    {% for lang in lang_list %}
+        <option value="{{lang}}"> {{lang}}</option>
+    {% endfor %}
+  </select>
+<br/>
+<button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+{% endif %}
+
+
 
 {% endblock %}
+
+
 
