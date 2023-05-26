@@ -10,7 +10,7 @@
 </code></pre>
 
 <br/><br/>
-<form method=POST action="{% url 'home' %}" >
+<form method=POST action="{% url 'write_code' %}" >
     {% csrf_token %}
     <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">Input your request:</label>
@@ -25,6 +25,7 @@
 <br/>
 <button type="submit" class="btn btn-secondary">Submit</button>
 </form>
+
 {% else %}
 
 <pre>
@@ -34,7 +35,7 @@ print("Hello World!")
 </code></pre>
 
 <br/><br/>
-<form method=POST action="{% url 'home' %}" >
+<form method=POST action="{% url 'write_code' %}" >
     {% csrf_token %}
   <div class="mb-3">
     <label for="exampleFormControlTextarea1" class="form-label">Input your request:</label>
