@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm
-
+from .models import Dialogue
 
 def home(request):
     lang_list = ['c', 'clike', 'cpp', 'css', 'html', 'java', 'javascript', 'markup', 'php', 'python', 'rust', 'sql']
@@ -91,13 +91,15 @@ def ask_me(request):
             try:
                 response = openai.Completion.create(
                     model = 'text-davinci-003',
-                    prompt = f"Respond the following statement or question in English and in one or two paragraphs. {question}",
+                    prompt = f"Respond the following statement or question in English: {question}",
                     temperature = 0,
                     max_tokens = 1500,
                     top_p = 1.0,
                     )
                 print("in try", response)
                 response = (response["choices"][0]["text"]).strip()
+                record = Dialogue(question=question, answer=response, user=request.user)
+                record.save()
                 return render(request, 'ask_me.html', {'response':response, 'question':question})
             except Exception as e:
                 print("in Exception", e)
@@ -142,5 +144,7 @@ def register_user(request):
 
     return render(request, 'register.html', {"form":form})
 
-
-        
+@login_required
+def ask_me_arch(request):
+    dialogues = Dialogue.objects.filter(user_id=request.user.id)
+    return render(request, 'ask_me_arch.html', {"dialogues":dialogues})

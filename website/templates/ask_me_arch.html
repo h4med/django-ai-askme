@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>AnswerBot Archive</h2>
+<br/>
+{% if dialogues %}
+
+    {% for dialogue in dialogues %}
+
+    <div class="card">
+        <div class="card-body">
+            <div class="alert alert-dark" role="alert">
+                {{ dialogue.question }}
+            </div>
+            <div class="alert alert-light" role="alert">
+                {{ dialogue.answer }}
+            </div>
+        </div>
+      </div>
+        <br/>
+    
+    {% endfor %}
+
+{% endif %}
+
+{% endblock %}
