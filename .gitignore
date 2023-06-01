@@ -3,3 +3,6 @@ venv/
 *.pyc
 /media/
 /static/
+website/migrations/
+website/__pycache__/
+__pycache__/
