@@ -89,18 +89,31 @@ def ask_me(request):
             openai.api_key = config('OPENAI_API_KEY')
             openai.Model.list()
             try:
-                response = openai.Completion.create(
-                    model = 'text-davinci-003',
-                    prompt = f"Respond the following statement or question in English: {question}",
-                    temperature = 0,
-                    max_tokens = 1500,
-                    top_p = 1.0,
+                # response = openai.Completion.create(
+                #     model = 'text-davinci-003',
+                #     prompt = f"Respond the following statement or question in English: {question}",
+                #     temperature = 0,
+                #     max_tokens = 1500,
+                #     top_p = 1.0,
+                #     )
+                response = openai.ChatCompletion.create(
+                    model="gpt-3.5-turbo-0301",
+                    messages=[
+                        {
+                            "role": "user", 
+                            "content": f"Respond the following statement or question in English: {question}!"
+                        }
+                    ]
+                    
                     )
                 print("in try", response)
-                response = (response["choices"][0]["text"]).strip()
-                record = Dialogue(question=question, answer=response, user=request.user)
+                # response = (response["choices"][0]["text"]).strip()
+                ans = (response["choices"][0]["message"]["content"]).strip()
+                tokens = int(response["usage"]["total_tokens"])
+                id = response["id"]
+                record = Dialogue(question=question, answer=ans, user=request.user, total_tokens=tokens, openai_id=id)
                 record.save()
-                return render(request, 'ask_me.html', {'response':response, 'question':question})
+                return render(request, 'ask_me.html', {'response':ans, 'question':question})
             except Exception as e:
                 print("in Exception", e)
                 return render(request, 'ask_me.html', {'question':question, 'response':e})
@@ -146,5 +159,5 @@ def register_user(request):
 
 @login_required
 def ask_me_arch(request):
-    dialogues = Dialogue.objects.filter(user_id=request.user.id)
+    dialogues = Dialogue.objects.filter(user_id=request.user.id).order_by('-created_at')
     return render(request, 'ask_me_arch.html', {"dialogues":dialogues})
