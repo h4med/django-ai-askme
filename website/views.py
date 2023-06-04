@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import SignUpForm
 from .models import Dialogue
 
+@login_required
 def home(request):
     lang_list = ['c', 'clike', 'cpp', 'css', 'html', 'java', 'javascript', 'markup', 'php', 'python', 'rust', 'sql']
 

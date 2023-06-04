@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'home' %}">Hoosh-Yar</a>
+      <a class="navbar-brand" href="{% url 'home' %}">هوش‌یار</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,47 +9,59 @@
           <!-- <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Fix Code</a>
-          </li>
-
+          
           
           <!-- <li class="nav-item">
             <a class="nav-link disabled">Disabled</a>
           </li> -->
           
           {% if user.is_authenticated %}
-
+          <!-- 
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'write_code' %}">Write Code</a>
+              <a class="nav-link" href="{% url 'write_code' %}">برنامه‌نویس</a>
             </li>          
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'home' %}">Fix Code</a>
+            </li>-->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href=# role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                AnswerBot
+                برنامه‌نویس
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'ask_me' %}">AnswerBot </a></li>
-                <li><a class="dropdown-item" href="{% url 'ask_me_arch' %}">Archive </a></li>
+                <li><a class="dropdown-item" href="{% url 'write_code' %}">نوشتن برنامه</a></li>
+                <li><a class="dropdown-item" href="{% url 'home' %}">اصلاح برنامه</a></li>
+                <li><a class="dropdown-item" href="#">آرشیو </a></li>
+              </ul>
+            </li>  
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href=# role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                همه‌چیزدان
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'ask_me' %}">بپرس </a></li>
+                <li><a class="dropdown-item" href="{% url 'ask_me_arch' %}">آرشیو </a></li>
               </ul>
             </li> 
 
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              <a class="nav-link" href="{% url 'logout' %}">خروج</a>
             </li>
           {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'register' %}">Register</a>
+              <a class="nav-link" href="{% url 'register' %}">عضویت</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}">Login</a>
+              <a class="nav-link" href="{% url 'home' %}">ورود</a>
             </li>
         {% endif %}
 
         </ul>
+        <!-- 
         <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form>-->
       </div>
     </div>
   </nav>

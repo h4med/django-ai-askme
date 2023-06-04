@@ -1,8 +1,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div dir="ltr">
 {% if user.is_authenticated %} 
+
+<p>
+    <a class="btn btn-info" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+      Help
+    </a>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        <p class="lead">Here you can ask Hoosh-Yar assistant to write code for you.</p>
+        <p>Select the desired Programming language then ask what you need, for example: "wirte quick sort algorithm with example" </p>
+    </div>
+  </div>
+
 
 {% if response %}
 <pre>
@@ -29,13 +42,13 @@
 </form>
 
 {% else %}
-
+<!-- 
 <pre>
 <code class='line-numbers language-python'>
 print("Hello World!")
 
 </code></pre>
-
+-->
 <br/><br/>
 <form method=POST action="{% url 'write_code' %}" >
     {% csrf_token %}
@@ -77,6 +90,7 @@ print("Hello World!")
 
 {% endif %}
 
+</div>
 {% endblock %}
 
 

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div dir="ltr">
 {% if user.is_authenticated %} 
 
 {% if response %}
@@ -75,8 +75,5 @@ print("Hello World!")
     </div>
 
 {% endif %}
-
+</div>
 {% endblock %}
-
-
-
