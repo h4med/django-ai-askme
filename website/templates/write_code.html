@@ -6,16 +6,26 @@
 
 <p>
     <a class="btn btn-info" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-      Help
+        Help
     </a>
-  </p>
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-        <p class="lead">Here you can ask Hoosh-Yar assistant to write code for you.</p>
-        <p>Select the desired Programming language then ask what you need, for example: "wirte quick sort algorithm with example" </p>
+    <a class="btn btn-info" data-bs-toggle="collapse" href="#collapseExamplefa" role="button" aria-expanded="false" aria-controls="collapseExamplefa">
+        راهنما
+    </a>    
+</p>
+<div class="collapse" id="collapseExample">
+<div class="card card-body">
+    <p class="lead">Here you can ask Hoosh-Yar assistant to write code for you.</p>
+    <p>Select the desired Programming language then ask what you need, for example: "wirte quick sort algorithm with example" </p>
+</div>
+</div>
+<div class="collapse" id="collapseExamplefa">
+    <div class="card card-body" dir="rtl">
+        <p class="lead">از هوش‌یار بخواهید برای شما کدنویسی کند</p>
+        <p>زبان برنامه‌نویسی را انتخاب کرده و سپس از او بخواهید برای شما کدنویسی کند، مثلا الگوریتم مرتب‌سازی Quick-sort را بنویسد: <br /> 
+            <p dir="ltr"> "wirte quick sort algorithm with example" </p>
+        </p>
     </div>
-  </div>
-
+    </div>
 
 {% if response %}
 <pre>
@@ -24,7 +34,7 @@
 
 </code></pre>
 
-<br/><br/>
+
 <form method=POST action="{% url 'write_code' %}" >
     {% csrf_token %}
     <div class="mb-3">
