@@ -11,30 +11,22 @@
 
 </div>
 
-  
-{% comment %} <pre>
-<code>
-{{response}}
-
-</code></pre> {% endcomment %}
-
+{% endif %}
 <br/><br/>
 <form method=POST action="{% url 'ask_me' %}" >
     {% csrf_token %}
     <div class="mb-3">
 
-    <textarea class="form-control" name="question" placeholder="What is Your question?" rows="4"></textarea>
+    <textarea class="form-control" name="question" placeholder="سوال خود را اینجا به فارسی از دستیار همه‌چیزدان بپرسید..." rows="4"></textarea>
 </div>
 <br/>
 <button type="submit" class="btn btn-secondary">Submit</button>
 </form>
-{% else %}
 
-{% comment %} <pre>
-<code class='line-numbers language-python'>
-print("Hello World!")
 
-</code></pre> {% endcomment %}
+
+
+{% comment %} {% else %}
 
 <br/><br/>
 <form method=POST action="{% url 'ask_me' %}" >
@@ -45,9 +37,7 @@ print("Hello World!")
 <br/>
 <button type="submit" class="btn btn-secondary">Submit</button>
 </form>
-{% endif %}
-
-
+{% endif %} {% endcomment %}
 
 {% endblock %}
 

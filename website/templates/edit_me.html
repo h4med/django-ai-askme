@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if response %}
+<div class="alert alert-dark" role="alert">
+    {{question}}
+</div>
+<div class="alert alert-light" role="alert">
+    {{response}}
+
+</div>
+
+  
+{% comment %} <pre>
+<code>
+{{response}}
+
+</code></pre> {% endcomment %}
+
+<br/><br/>
+<form method=POST action="{% url 'edit_me' %}" >
+    {% csrf_token %}
+    <div class="mb-3">
+
+    <textarea class="form-control" name="question" placeholder="Paste the text you want to edit here..." rows="4"></textarea>
+</div>
+<br/>
+<button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+{% else %}
+
+{% comment %} <pre>
+<code class='line-numbers language-python'>
+print("Hello World!")
+
+</code></pre> {% endcomment %}
+
+<br/><br/>
+<form method=POST action="{% url 'edit_me' %}" >
+    {% csrf_token %}
+  <div class="mb-3">
+    <textarea class="form-control" name="question" placeholder="Paste the text you want to edit here..." rows="4"></textarea>
+</div>
+<br/>
+<button type="submit" class="btn btn-secondary">Submit</button>
+</form>
+{% endif %}
+
+
+
+{% endblock %}
+
+
+

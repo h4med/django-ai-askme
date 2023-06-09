@@ -39,8 +39,17 @@
                 همه‌چیزدان
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'ask_me' %}">بپرس </a></li>
+                <li><a class="dropdown-item" href="{% url 'ask_me_fa' %}">بپرس </a></li>
                 <li><a class="dropdown-item" href="{% url 'ask_me_arch' %}">آرشیو </a></li>
+              </ul>
+            </li> 
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href=# role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                ویرایش‌گر
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'edit_me' %}">ویرایش متن </a></li>
+                <li><a class="dropdown-item" href="#">آرشیو </a></li>
               </ul>
             </li> 
 

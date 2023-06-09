@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if response %}
+<div class="alert alert-dark" role="alert">
+    {{question}}
+</div>
+<div class="alert alert-light" role="alert">
+    {{response}}
+
+</div>
+
+{% endif %}
+
+
+
+<br/><br/>
+<form method=POST action="{% url 'ask_me_fa' %}" id="basicform">
+    {% csrf_token %}
+    <div class="mb-3">
+
+    <!-- <textarea class="form-control" name="question" placeholder="سوال را به فارسی از دستیار همه‌چیزدان بپرسید..." rows="4"></textarea>-->
+    {{form.input}}
+    
+</div>
+<br/>
+<button type="submit" >ثبت</button>
+</form>
+<br/>
+<br/>
+<div>
+    <ul class="result">
+</ul>
+</div>
+
+{% endblock %}
+
+
+

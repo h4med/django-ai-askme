@@ -31,3 +31,14 @@ class SignUpForm(UserCreationForm):
 		self.fields['password2'].label = ''
 		self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
 		
+class InputForm(forms.Form):
+    '''
+    Basic form for our animal name suggestion form and logo generator form
+    '''
+
+    input = forms.CharField(max_length=1500, required=True,
+      widget=forms.Textarea(attrs={
+        'placeholder': 'سوال خود را بپرسید؟'}))
+
+    class Meta:
+        fields = ('input',)
